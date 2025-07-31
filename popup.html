@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyNavigation</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+
+
+<body>
+  <div id="main-layout">
+    <div id="nav-container">
+    </div>
+    <div id="sidebar">
+      <div id="add-category-container">
+        <input type="text" id="new-category-name" placeholder="类别名称" />
+        <button id="add-category-btn">添加类别</button>
+        <button id="del-category-btn">删除类别</button>
+      </div>
+      <div id="add-link-container">
+        <select id="category-select"></select>
+        <input type="text" id="new-link-name" placeholder="链接名称" />
+        <input type="text" id="new-link-url" placeholder="链接URL" />
+        <button id="add-link-btn">添加链接</button>
+        <button id="del-link-btn">删除链接</button>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+
+</html>
