@@ -187,5 +187,66 @@ document.getElementById('add-link-btn').addEventListener('click', () => {
   });
 });
 
+// Export data function
+document.getElementById('export-btn').addEventListener('click', () => {
+  chrome.storage.local.get(['customConfig'], (result) => {
+    let config = result.customConfig;
+    if (!config) {
+      fetch(chrome.runtime.getURL('config.json'))
+        .then(response => response.json())
+        .then(data => {
+          exportData(data);
+        });
+    } else {
+      exportData(config);
+    }
+  });
+});
+
+function exportData(config) {
+  const dataStr = JSON.stringify(config, null, 2);
+  const dataBlob = new Blob([dataStr], {type: 'application/json'});
+  const url = URL.createObjectURL(dataBlob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `mynavigation-backup-${new Date().toISOString().split('T')[0]}.json`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
+// Import data function
+document.getElementById('import-btn').addEventListener('click', () => {
+  document.getElementById('import-file').click();
+});
+
+document.getElementById('import-file').addEventListener('change', (event) => {
+  const file = event.target.files[0];
+  if (file && file.type === 'application/json') {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const config = JSON.parse(e.target.result);
+        if (config.categories && Array.isArray(config.categories)) {
+          chrome.storage.local.set({ customConfig: config }, () => {
+            loadConfigAndRender();
+            alert('数据导入成功！');
+          });
+        } else {
+          alert('文件格式错误，请选择正确的备份文件。');
+        }
+      } catch (error) {
+        alert('文件解析失败，请检查文件格式。');
+      }
+    };
+    reader.readAsText(file);
+  } else {
+    alert('请选择JSON格式的文件。');
+  }
+  // Reset file input
+  event.target.value = '';
+});
+
 // Initial render
 loadConfigAndRender();

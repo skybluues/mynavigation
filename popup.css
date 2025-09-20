@@ -1,10 +1,10 @@
 /* Category card styling */
 .category-card {
   background: #fafdff;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px 0 rgba(120,140,180,0.10);
-  padding: 18px 18px 12px 18px;
-  margin-bottom: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px 0 rgba(120,140,180,0.08);
+  padding: 12px 14px 8px 14px;
+  margin-bottom: 16px;
   border: none;
   transition: box-shadow 0.2s;
 }
@@ -15,15 +15,21 @@
 .nav-link {
   color: #1976d2;
   text-decoration: none;
-  font-size: 16px;
-  padding: 8px 16px;
-  border-radius: 8px;
+  font-size: 12px;
+  padding: 2px 4px;
+  border-radius: 4px;
   background: #f0f3fa;
   border: 1px solid #e3e8f0;
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
   font-weight: 500;
-  box-shadow: 0 1px 4px 0 rgba(120,140,180,0.06);
+  box-shadow: 0 1px 2px 0 rgba(120,140,180,0.06);
   display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  max-width: 100%;
 }
 .nav-link:hover {
   background: #e3e8f0;
@@ -33,11 +39,11 @@
 /* Category title styling */
 .category-title {
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
   margin-top: 0;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   color: #3a4a6b;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   padding-left: 2px;
   background: none;
   border: none;
@@ -46,10 +52,10 @@
 /* Links list styling */
 .links-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px 14px;
-  margin-bottom: 8px;
-  margin-top: 4px;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 4px 6px;
+  margin-bottom: 6px;
+  margin-top: 2px;
 }
 #main-layout {
   display: flex;
@@ -98,7 +104,7 @@
   padding-left: 2px;
 }
 
-#add-category-container, #add-link-container {
+#add-category-container, #add-link-container, #sync-container {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -168,7 +174,7 @@
   cursor: pointer;
   transition: background 0.2s;
 }
-#add-category-btn, #add-link-btn, #del-category-btn, #del-link-btn {
+#add-category-btn, #add-link-btn, #del-category-btn, #del-link-btn, #export-btn, #import-btn {
   background: #1976d2;
   color: #fff;
   border: none;
@@ -181,7 +187,7 @@
   box-shadow: 0 1px 4px 0 rgba(30,144,255,0.10);
   margin-top: 2px;
 }
-#add-category-btn:hover, #add-link-btn:hover, #del-category-btn:hover, #del-link-btn:hover {
+#add-category-btn:hover, #add-link-btn:hover, #del-category-btn:hover, #del-link-btn:hover, #export-btn:hover, #import-btn:hover {
   background: #1565c0;
   box-shadow: 0 2px 8px 0 rgba(30,144,255,0.16);
 }
@@ -201,6 +207,6 @@ body {
 #nav-container {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 
